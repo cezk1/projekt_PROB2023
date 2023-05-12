@@ -1,8 +1,8 @@
 # Terminy:
 
-10.05.2023 r. (godz. 23:59) -- specyfikacja funkcjonalna;
-17.05.2023 r. (godz. 23:59) -- specyfikacja implementacyjna;
-14.06.2023 r. (godz. 23:59) -- sprawozdanie końcowe.
+10.05.2023 r. (godz. 23:59) -- specyfikacja funkcjonalna
+17.05.2023 r. (godz. 23:59) -- specyfikacja implementacyjna
+14.06.2023 r. (godz. 23:59) -- sprawozdanie końcowe
 
 # Artefakty projektu:
 
