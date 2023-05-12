@@ -1,17 +1,17 @@
-#Terminy:
+# Terminy:
 
 10.05.2023 r. (godz. 23:59) -- specyfikacja funkcjonalna;
 17.05.2023 r. (godz. 23:59) -- specyfikacja implementacyjna;
 14.06.2023 r. (godz. 23:59) -- sprawozdanie końcowe.
 
-#Artefakty projektu:
+# Artefakty projektu:
 
 specyfikacja funkcjonalna (5 pkt);
 specyfikacja implementacyjna (5 pkt);
 działający program + kod (20 pkt)
 sprawozdanie końcowe z projektu (10 pkt).
 
-#Temat podstawowy
+# Temat podstawowy
 
 Należy stworzyć (zaimplementować) program z interfejsem graficznym.
 
@@ -36,6 +36,5 @@ Jak zawsze kod powinien być napisany zgodnie z paradygmatem programowania obiek
 
 W sprawozdaniu końcowym należy wskazać, które wzorce zostały użyte (i uzasadnić ich wykorzystanie w tym miejscu).
 
-#Uwaga! 
+# Uwaga! 
 W sprawozdaniu końcowym należy wskazać konkretne źródła (linki) do wykorzystywanych danych. Państwa programy mają działać na niezmodyfikowanych plikach z danymi.
-
