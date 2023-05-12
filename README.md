@@ -19,7 +19,7 @@ Interfejs graficzny powinien umożliwiać wczytanie z (minimum trzech) plików d
 
 Wczytane dane powinny być prezentowane w kilku formach:
 
-- jako dane na wykresie słupkowym / liniowym (punktowym) (wybrane (z trzech źródeł) statystyki dla wybranych krajów na jednym wykresie);\
+- jako dane na wykresie słupkowym / liniowym (punktowym) (wybrane (z trzech źródeł) statystyki dla wybranych krajów na jednym wykresie);
 - jako mapa Europy z zaznaczonymi krajami, dla których statystyka jest dostępna. Po wybraniu (kliknięciu) w obszar danego kraju powinna pojawić się informacja zbiorcza (z trzech statystyk) prezentująca najświeższe (z ostatniego dostępnego okresu) dane.
 W przypadku pierwszym (na wykresie słupkowym) powinna być możliwość sterowania zakresem dat uwzględnianych na wykresie.
 
