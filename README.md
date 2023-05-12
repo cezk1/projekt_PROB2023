@@ -1,6 +1,6 @@
 # Terminy:
 
-10.05.2023 r. (godz. 23:59) -- specyfikacja funkcjonalna
+10.05.2023 r. (godz. 23:59) -- specyfikacja funkcjonalna\n
 17.05.2023 r. (godz. 23:59) -- specyfikacja implementacyjna
 14.06.2023 r. (godz. 23:59) -- sprawozdanie końcowe
 
