@@ -15,7 +15,7 @@ class ReadDataFromFile:
         structure_df = pd.read_excel(path, sheet_name="Structure", skiprows=1)
 
         # arkusz "Sheet 1"
-        sheet1_df = pd.read_excel(path, sheet_name="Sheet 1", skiprows=1).replace\
+        sheet1_df = pd.read_excel(path, sheet_name="Sheet 1", skiprows=7).replace\
             (to_replace=[None, ":"], value=np.nan)
 
         self.__set_structure_df(structure_df)

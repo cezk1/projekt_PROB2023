@@ -10,9 +10,12 @@ def main(file_path):
 
     file_data = FileData(file_path)
 
-    file_data.make_countries()
+    file_data.cos_pl()
 
 
 if __name__ == "__main__":
-    excel_file = "rail_pa_total_page_spreadsheet.xlsx"
-    main(excel_file)
+    excel_file_rail = "rail_pa_total_page_spreadsheet.xlsx"
+    excel_file_avia = "avia_paoc__custom_6007523_page_spreadsheet.xlsx"
+    excel_file_road = "road_pa_mov_page_spreadsheet.xlsx"
+
+    main(excel_file_road)
