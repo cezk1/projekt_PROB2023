@@ -1,0 +1,1 @@
+#TODO: robienie wykresu na podstawie przekazanych danych

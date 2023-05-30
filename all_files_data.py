@@ -1,0 +1,1 @@
+#TODO: przechowuje dane ze wszystkich plikow

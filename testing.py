@@ -1,5 +1,7 @@
 import pandas as pd
-from FileData import FileData
+from make_file_data import MakeFileData
+from file_data import FileData
+from read_file import ReadFile
 
 
 def main(file_path):
@@ -8,9 +10,9 @@ def main(file_path):
     pd.set_option("display.width", None)
     pd.set_option("display.max_colwidth", None)
 
-    file_data = FileData(file_path)
-
-    file_data.cos_pl()
+    mfd1 = MakeFileData(file_path)
+    # mfd1.test()
+    mfd1.make_data()
 
 
 if __name__ == "__main__":
