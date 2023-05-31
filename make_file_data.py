@@ -53,7 +53,7 @@ class MakeFileData:
         years_list = self.__make_year_list()
         time_row = df1.iloc[self.__time_row_nr]
 
-        countries_with_data = self.__countries_with_data
+
 
         for row_index, row in df1.iterrows():
             if row[0] in countries_list:
@@ -64,16 +64,17 @@ class MakeFileData:
                     if time_row[i] in years_list:
                         years_data.append(self.__make_year_data(time_row[i], row[i]))
 
-                countries_with_data.append(self.__make_country_data(row_name, years_data))
+                self.__countries_with_data.append(self.__make_country_data(row_name, years_data))
 
         # TODO: czy takie rozwiazenie jest git?
-        for elem in countries_with_data:
-            print(elem)
+        # for elem in countries_with_data:
+        #     print(elem)
+        print(type(self.__countries_with_data))
 
-        return countries_with_data
+        return self.__countries_with_data
 
     def make_data(self):
-        self.__read_data()
+        return self.__read_data()
 
     def test(self):
         print(self.__sheet1, "".center(60, "="), sep="\n")
