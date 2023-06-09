@@ -15,8 +15,8 @@ class MainWindow(QMainWindow):
     def __init_default_values(self):
         self.__padding_x = 250
         self.__padding_y = 250
-        self.__width = 800
-        self.__height = 600
+        self.__width = 1200
+        self.__height = 900
 
     def __init_view(self):
         self.setWindowTitle("Main Window for Project 2023")

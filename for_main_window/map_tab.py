@@ -9,7 +9,7 @@ class MapTab(QWidget):
 
     def __init_view(self):
         layout = QVBoxLayout()
-        label = QLabel("Map content goes here", self)
+        label = QLabel("TODO: mapa z geopandas z klikaniem")
 
         layout.addWidget(label)
 
