@@ -6,8 +6,8 @@
 
 # Artefakty projektu:
 
-specyfikacja funkcjonalna (5 pkt);\
-specyfikacja implementacyjna (5 pkt);\
+specyfikacja funkcjonalna (3.5/5 pkt); \
+specyfikacja implementacyjna (3.5/5 pkt);\
 działający program + kod (20 pkt)\
 sprawozdanie końcowe z projektu (10 pkt).
 
