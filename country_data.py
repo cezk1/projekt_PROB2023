@@ -7,7 +7,12 @@ class CountryData:
         return f"{self.__country_name}: {self.__years_data}"
 
     def get_country_name(self):
-        return self.__country_name
+        if len(self.__country_name) > 15:
+            name = self.__country_name[0:15].strip() + "..."
+        else:
+            name = self.__country_name
+
+        return name
 
     def get_years_data(self):
         return self.__years_data
