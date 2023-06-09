@@ -1,4 +1,4 @@
-from file_data import FileData
+from for_data_handling.file_data import FileData
 import bisect
 
 

@@ -1,9 +1,6 @@
 from matplotlib import pyplot as plt
-from file_data import FileData
-from this_project_exceptions import FileAlreadyLoaded
-from all_files_data import AllFilesData
-from country_data import CountryData
-import itertools
+from for_data_handling.all_files_data import AllFilesData
+from for_data_handling.country_data import CountryData
 
 
 class MakeChart:

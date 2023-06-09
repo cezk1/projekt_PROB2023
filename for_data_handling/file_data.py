@@ -1,7 +1,4 @@
-from read_file import ReadFile
-from country_data import CountryData
-from year_data import YearData
-from make_file_data import MakeFileData
+from for_data_handling.make_file_data import MakeFileData
 
 
 class FileData:

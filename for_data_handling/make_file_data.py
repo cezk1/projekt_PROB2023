@@ -1,7 +1,6 @@
-from read_file import ReadFile
-from country_data import CountryData
-from year_data import YearData
-import numpy as np
+from for_data_handling.read_file import ReadFile
+from for_data_handling.country_data import CountryData
+from for_data_handling.year_data import YearData
 
 
 class MakeFileData:

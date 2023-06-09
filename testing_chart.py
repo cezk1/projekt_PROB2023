@@ -1,9 +1,6 @@
 import pandas as pd
-from make_file_data import MakeFileData
-from file_data import FileData
-from read_file import ReadFile
 from make_chart import MakeChart
-from all_files_data import AllFilesData
+from for_data_handling.all_files_data import AllFilesData
 
 
 def main(*file_paths):
