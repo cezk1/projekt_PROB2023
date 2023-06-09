@@ -12,6 +12,7 @@ class FilesAdder(QWidget):
         super().__init__()
         self.__load_function = load_function
         self.__showed_paths = []
+
         self.__init_view()
 
     def __init_view(self):
@@ -34,4 +35,4 @@ class FilesAdder(QWidget):
             self.__files_list.update_list(text)
             self.__load_function(text)
             self.__showed_paths.append(text)
-            print(text)
+            self.__text_box.clear()

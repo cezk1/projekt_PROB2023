@@ -11,7 +11,7 @@ class CountryButton(QPushButton):
         self.__click()
 
         if self.__is_clicked:
-            color = "blue"
+            color = "grey"
         else:
             color = "None"
 

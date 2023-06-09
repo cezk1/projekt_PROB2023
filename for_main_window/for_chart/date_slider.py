@@ -5,12 +5,12 @@ from PyQt5.QtWidgets import QWidget, QSlider, QLabel, QHBoxLayout, QVBoxLayout, 
 class DateSlider(QWidget):
 
     # DoubleSlider z materialow
-    def __init__(self, min_val=1993, max_val=2015):
+    def __init__(self, min_val, max_val):
         super().__init__()
-        self.__validate_args(min_val, max_val)
+        self.__validate_args(int(min_val), int(max_val))
 
-        self.__min_val = min_val
-        self.__max_val = max_val
+        self.__min_val = int(min_val)
+        self.__max_val = int(max_val)
         self.__step = 1
         self.__tick_interval = self.__step
 

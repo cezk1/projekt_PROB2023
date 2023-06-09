@@ -13,8 +13,8 @@ class MainWindow(QMainWindow):
         self.show()
 
     def __init_default_values(self):
-        self.__padding_x = 250
-        self.__padding_y = 250
+        self.__padding_x = 50
+        self.__padding_y = 50
         self.__width = 1200
         self.__height = 900
 

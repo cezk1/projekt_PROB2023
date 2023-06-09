@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QLabel, QWidget
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from for_data_handling.all_files_data import AllFilesData
@@ -16,5 +16,4 @@ class MainChart(FigureCanvas):
         self.__fig, self.__ax = make_chart.draw_chart()
 
         super(MainChart, self).__init__(self.__fig)
-
 
