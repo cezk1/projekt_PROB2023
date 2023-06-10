@@ -4,6 +4,7 @@ from for_data_handling.all_files_data import AllFilesData
 from for_main_window.make_chart import MakeChart
 
 
+# tego w koncu tez nie uzywam
 class MainChart(FigureCanvas):
     def __init__(self, make_chart: MakeChart):
         width = 10

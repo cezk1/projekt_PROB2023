@@ -1,6 +1,7 @@
 from for_data_handling.make_file_data import MakeFileData
 
 
+# klasa ktora przechowuje dane dla jednego pliku
 class FileData:
     def __init__(self, file_path):
         self.__file_path = file_path
@@ -9,12 +10,13 @@ class FileData:
         self.__countries_data = []  # lista obiektow CountryData
         self.__prepare_data()
 
+    # kiedy tworzymy obiekt, tworzone sa odrazu dane zczytane z pliku
     def __prepare_data(self):
         print("preparing data...")
-        maker = MakeFileData(self.__file_path)
+        maker = MakeFileData(self.__file_path)  # stworzenie obiektu, ktory robi wszystkie potrzebne nam dane
         self.__countries_data = maker.make_data()
-        self.__countries_names = maker.get_countries_names()
-        self.__all_years = maker.get_all_years()
+        self.__countries_names = maker.get_countries_names()  # wszystkie panstwa w pliku
+        self.__all_years = maker.get_all_years()  # wszystkie lata w pliku
         print(f"Prepared FileData for: {self.__file_path}")
         # for elem in self.__countries_data:
         #     print(elem)

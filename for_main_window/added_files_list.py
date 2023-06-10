@@ -14,8 +14,8 @@ class AddedFilesList(QScrollArea):
         self.__scroll_layout = QVBoxLayout(self.__scroll_content)
         self.setWidget(self.__scroll_content)
 
+    # dodanie sciezki do listy
     def update_list(self, text, nr):
-        print("list update")
         name = f"({nr}) {text}"
         label = QLabel(name)
         self.__scroll_layout.addWidget(label)

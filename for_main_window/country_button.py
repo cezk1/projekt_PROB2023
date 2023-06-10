@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QPushButton
 
 
+# przycisk dla kraju do umieszczenia na przewijanej liscie
 class CountryButton(QPushButton):
     def __init__(self, name, add_function, remove_function):
         super().__init__(name)
@@ -16,10 +17,12 @@ class CountryButton(QPushButton):
 
         if self.__is_clicked:
             color = "grey"
-            self.__add_function(self.__name)
+            self.__add_function(self.__name)  # jesli przycisk jest klikniety to dodaje go do listy krajow, ktore
+            # maja byc wyswietlane na wykresie
         else:
             color = "None"
-            self.__remove_function(self.__name)
+            self.__remove_function(self.__name)  # jesli przycisk jest odklikniety to usuwam go z listy krajow, ktore
+            # maja byc wyswietlane na wykresie
 
         self.setStyleSheet(f"background-color:{color}")
 

@@ -8,7 +8,8 @@ from for_data_handling.country_data import CountryData
 import bisect
 
 
-class MakeChart:
+# to wersja poczatkowa, ktorej w koncu nie uzywam
+class MakeChartV1:
     def __init__(self, all_files_data: AllFilesData):
         self.__all_files_data = all_files_data
         if len(self.__all_files_data.get_files_data()) >= 1:
@@ -96,7 +97,12 @@ class MakeChart:
         return self.__fig, self.__ax
 
 
-class MakeChartV2(FigureCanvas):
+
+
+# wersja, ktorej aktualnie uzywam
+
+# klasa odpowiadajaca za zrobienie wykresu
+class MakeChart(FigureCanvas):
     def __init__(self, all_files_data, country_list, min_year, max_year, width=10, height=10, dpi=100):
         self.__fig = Figure(figsize=(width, height), dpi=dpi)
         super().__init__(self.__fig)
@@ -112,38 +118,47 @@ class MakeChartV2(FigureCanvas):
         # self.__plot_line()
         self.__plot_data()
 
+    # make_data_to_show tworzy liste potrzebna do wykresu na podstawie danych jednego panstwa z jednego pliku
     def __make_data_to_show(self, country_data: CountryData):
         all_years = []
         all_values = []
         for i, year_data in enumerate(country_data.get_years_data()):
-            print(year_data.get_year())
-            print(type(self.__min_year), self.__max_year)
             if int(year_data.get_year()) >= self.__min_year and int(year_data.get_year()) <= self.__max_year:
                 all_years.append(year_data.get_year())
                 all_values.append(year_data.get_value())
 
         return all_years, all_values
 
+    # plot_data robi wykresy dla przekazanej listy krajow i ich wartosci
     def __plot_data(self):
         self.__ax.clear()
         ax = self.__ax
         self.__files_to_show = self.__all_files_data.get_files_data()
 
+        # TODO: problem w robieniu wykresu gdy najpierw sie doda avia a potem rail albo road
+        #  edit: zmienilem w YearData zeby metoda get_year() zwracala wartosc int, i problem dziwnego
+        #  wykresu zniknal
         for i, file_data in enumerate(self.__files_to_show, 1):
             for country_data in file_data.get_data():
                 if country_data.get_country_name() in self.__country_list:
-                    # get all years and values for this country
+                    # zbierz wszystkie dane dla lat dla panstwa
                     all_years = self.__make_data_to_show(country_data)[0]
                     all_values = self.__make_data_to_show(country_data)[1]
 
-                    # plot line for this country
+                    if len(country_data.get_country_name()) > 15:
+                        name_for_legend = country_data.get_country_name()[0:15].strip() + "..."
+                    else:
+                        name_for_legend = country_data.get_country_name()
+                    # dodaj wykres panstwa
                     ax.plot(all_years, all_values, "o--",
-                            label=f"{country_data.get_country_name()} (Path nr. {i})")
+                            label=f"{name_for_legend} (Path nr. {i})")
 
         # box = ax.get_position()
         # ax.set_position([box.x0, box.y0, box.width * 0.8, box.height])
-        # ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
-        ax.legend()
+        ax.set_position([0.125, 0.110, 0.6, 0.8])
+        ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
+
+        # ax.legend()
         # Adding the legend and showing the plot
         ax.set_xlabel("Years")
         ax.set_ylabel("Number of passengers")

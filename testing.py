@@ -5,12 +5,14 @@ import pandas as pd
 
 
 def main():
+    # te ustawienia sa wylacznie do tego zeby ladniej wygladaly dataframy wyswietlane w terminalu
     pd.set_option("display.max_columns", None)
     pd.set_option("display.max_rows", None)
     pd.set_option("display.width", None)
     pd.set_option("display.max_colwidth", None)
 
     app = QApplication(sys.argv)
+    # stworzenie okna glownego ze wszystkim wewnatrz
     w = MainWindow()
     w.show()
     app.exec()

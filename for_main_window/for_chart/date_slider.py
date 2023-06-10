@@ -5,7 +5,8 @@ from PyQt5.QtWidgets import QWidget, QSlider, QLabel, QHBoxLayout, QVBoxLayout, 
 class DateSlider(QWidget):
 
     # DoubleSlider z materialow
-    def __init__(self, min_val, max_val, update_min_max):
+    def __init__(self, min_val, max_val, update_min_max):  # update_min_max to przekazana funkcja, ktora wplywa na
+        # wyswietlany wykres
         super().__init__()
         self.__validate_args(int(min_val), int(max_val))
 
@@ -22,6 +23,7 @@ class DateSlider(QWidget):
         if min_val >= max_val:
             raise Exception("Wrong values! max_val cannot be lower than min_val.")
 
+    # stworzenie suwaka dat polega na dodaniu dwoch suwakow, gdzie jeden jest ograniczony drugim
     def __create_view(self):
         self.__slider_from = self.__create_slider_from()
         self.__slider_to = self.__create_slider_to()
@@ -53,7 +55,7 @@ class DateSlider(QWidget):
 
         slider.setValue(self.__min_val)
         slider.valueChanged.connect(self.__handle_from_change)
-        slider.valueChanged.connect(self.__update_min_max)
+        slider.valueChanged.connect(self.__update_min_max)  # polaczenie zmiany wartosci suwaka ze zmiana na wykresie
 
         return slider
 
@@ -68,7 +70,7 @@ class DateSlider(QWidget):
 
         slider.setValue(self.__max_val)
         slider.valueChanged.connect(self.__handle_to_change)
-        slider.valueChanged.connect(self.__update_min_max)
+        slider.valueChanged.connect(self.__update_min_max)  # polaczenie zmiany wartosci suwaka ze zmiana na wykresie
 
         return slider
 
@@ -77,6 +79,7 @@ class DateSlider(QWidget):
         value_from = self.__slider_from.value()
         value_to = self.__slider_to.value()
 
+        # ograniczenie przesuwania suwaka tak aby slider_from nie mogl byc wiekszy niz slider_to
         if value_from >= value_to - self.__step:
             self.__slider_to.setValue(value_from + self.__step)
         if value_from > self.__max_val - self.__tick_interval:
@@ -89,6 +92,7 @@ class DateSlider(QWidget):
         value_from = self.__slider_from.value()
         value_to = self.__slider_to.value()
 
+        # ograniczenie przesuwania suwaka tak aby slider_to nie mogl byc mniejszy niz slider_from
         if value_to <= value_from + self.__step:
             self.__slider_from.setValue(value_to - self.__step)
         if value_to < self.__min_val + self.__tick_interval:
@@ -96,21 +100,21 @@ class DateSlider(QWidget):
 
         self.__update_chosen_val_to()
 
+    # tutaj sie zmienia wyswietlana wybrana data od
     def __update_chosen_val_from(self):
         value = self.__slider_from.value()
         # print(f"Updated value from: {value}")
         self.__chosen_from_label.setText(f"Year from: {value}")
 
+    # tutaj sie zmienia wyswietlana wybrana data do
     def __update_chosen_val_to(self):
         value = self.__slider_to.value()
         # print(f"Updated value to: {value}")
         self.__chosen_to_label.setText(f"Year to: {value}")
 
     def get_val_to(self):
-        print(self.__slider_to.value())
         return self.__slider_to.value()
 
     def get_val_from(self):
-        print(self.__slider_from.value())
         return self.__slider_from.value()
 

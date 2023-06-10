@@ -3,6 +3,7 @@ import os
 import sys
 
 
+# przycisk do otwierania eksploratora plikow na komputerze
 class ChooseButton(QPushButton):
     def __init__(self, button_clicked_function):
         super().__init__()
@@ -15,8 +16,8 @@ class ChooseButton(QPushButton):
         self.clicked.connect(self.__open_files_explorer)
 
     def __open_files_explorer(self):
-        starting_dir = os.path.dirname(sys.argv[0])  # current dir
-        options = QFileDialog.DontUseNativeDialog
+        starting_dir = os.path.dirname(sys.argv[0])  # sciezka poczatkowa ustawiona na sciezke, w ktorej jest program
+        options = QFileDialog.DontUseNativeDialog  # tym mozna wylaczyc domyslny systemowy wyglad okna
         parent = None
 
         potential_file, _ = QFileDialog.getOpenFileName(parent, "Choose proper xlsx file",
@@ -27,4 +28,4 @@ class ChooseButton(QPushButton):
         if potential_file:
             self.__btn_clicked(potential_file)
         else:
-            print("File chooser error")
+            print("File chooser exit")
