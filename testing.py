@@ -1,9 +1,15 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 from main_window import MainWindow
+import pandas as pd
 
 
 def main():
+    pd.set_option("display.max_columns", None)
+    pd.set_option("display.max_rows", None)
+    pd.set_option("display.width", None)
+    pd.set_option("display.max_colwidth", None)
+
     app = QApplication(sys.argv)
     w = MainWindow()
     w.show()

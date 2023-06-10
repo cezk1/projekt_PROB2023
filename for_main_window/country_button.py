@@ -16,7 +16,6 @@ class CountryButton(QPushButton):
 
         if self.__is_clicked:
             color = "grey"
-            print(f"clicked: {self.__name}")
             self.__add_function(self.__name)
         else:
             color = "None"

@@ -15,8 +15,8 @@ class MainWindow(QMainWindow):
     def __init_default_values(self):
         self.__padding_x = 50
         self.__padding_y = 50
-        self.__width = 1200
-        self.__height = 900
+        self.__width = 800
+        self.__height = 600
 
     def __init_view(self):
         self.setWindowTitle("Main Window for Project 2023")
@@ -34,8 +34,9 @@ class MainWindow(QMainWindow):
         return main_layout
 
     def __add_widgets_to_layout(self, main_layout):
-        self.__chart_tab = ChartTab()
+
         self.__map_tab = MapTab()
+        self.__chart_tab = ChartTab(self.__map_tab)
 
         main_layout.addTab(self.__chart_tab, "Chart")
         main_layout.addTab(self.__map_tab, "Map")

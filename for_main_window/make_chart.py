@@ -110,11 +110,9 @@ class MakeChartV2(FigureCanvas):
     def __init_view(self):
         self.__ax = self.__fig.add_subplot(111)
         # self.__plot_line()
-        if len(self.__country_list) > 0:
-            self.__plot_data()
+        self.__plot_data()
 
     def __make_data_to_show(self, country_data: CountryData):
-        print("in make_data_to_show")
         all_years = []
         all_values = []
         for i, year_data in enumerate(country_data.get_years_data()):
@@ -128,21 +126,17 @@ class MakeChartV2(FigureCanvas):
 
     def __plot_data(self):
         self.__ax.clear()
-        print("starting plot_data")
         ax = self.__ax
         self.__files_to_show = self.__all_files_data.get_files_data()
 
         for i, file_data in enumerate(self.__files_to_show, 1):
-            print("in loop for files_to_show")
             for country_data in file_data.get_data():
-                print(f"in loop for {country_data.get_country_name()}")
                 if country_data.get_country_name() in self.__country_list:
                     # get all years and values for this country
                     all_years = self.__make_data_to_show(country_data)[0]
                     all_values = self.__make_data_to_show(country_data)[1]
 
                     # plot line for this country
-                    print("plot line for country")
                     ax.plot(all_years, all_values, "o--",
                             label=f"{country_data.get_country_name()} (Path nr. {i})")
 
@@ -166,7 +160,6 @@ class MakeChartV2(FigureCanvas):
         self.__country_list = country_list
         self.__min_year = min_year
         self.__max_year = max_year
-        print("now in update_plot in MakeChartV2")
         # self.__plot_line()
         self.__plot_data()
 

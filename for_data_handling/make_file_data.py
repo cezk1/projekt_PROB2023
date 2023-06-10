@@ -68,7 +68,21 @@ class MakeFileData:
         # for elem in self.__countries_with_data:
         #     print(elem)
 
+        self.make_test_dataframe()
+        # self.__dataframe_ulozony = cos tam
         return self.__countries_with_data
+
+    def make_test_dataframe(self):
+        test_dict_for_countries = {}
+        for elem in self.__countries_with_data:
+            country_name = elem.get_country_name()
+            value_dict_for_country = {}
+            for year in elem.get_years_data():
+                value_dict_for_country[year.get_year()] = year.get_value()
+            test_dict_for_countries[country_name] = value_dict_for_country
+
+        for key, val in test_dict_for_countries.items():
+            print(f"{key}: {val}")
 
     def make_data(self):
         return self.__read_data()
@@ -78,6 +92,9 @@ class MakeFileData:
 
     def get_all_years(self):
         return self.__all_years
+
+    def get_dataframe_ulozony(self):
+        pass
 
     def test(self):
         print(self.__sheet1, "".center(60, "="), sep="\n")

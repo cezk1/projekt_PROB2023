@@ -13,6 +13,7 @@ class FilesAdder(QWidget):
         super().__init__()
         self.__load_function = load_function
         self.__showed_paths = []
+        self.__nr_of_paths = 0
 
         self.__init_view()
 
@@ -35,7 +36,8 @@ class FilesAdder(QWidget):
     def __chosen_from_explorer(self, path):
         text = os.path.basename(path)
         if text not in self.__showed_paths and os.path.exists(text):
-            self.__files_list.update_list(text)
+            self.__nr_of_paths += 1
+            self.__files_list.update_list(text, self.__nr_of_paths)
             self.__load_function(text)
             self.__showed_paths.append(text)
             self.__text_box.clear()
@@ -43,7 +45,8 @@ class FilesAdder(QWidget):
     def __button_clicked(self):
         text = self.__text_box.text()
         if text not in self.__showed_paths and os.path.exists(text):
-            self.__files_list.update_list(text)
+            self.__nr_of_paths += 1
+            self.__files_list.update_list(text, self.__nr_of_paths)
             self.__load_function(text)
             self.__showed_paths.append(text)
             self.__text_box.clear()

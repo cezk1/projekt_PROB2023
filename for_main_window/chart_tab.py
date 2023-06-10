@@ -1,5 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QGridLayout
+from PyQt5 import sip
 
 from for_main_window.for_chart.date_slider import DateSlider
 from for_main_window.main_chart import MainChart
@@ -8,10 +9,11 @@ from for_data_handling.all_files_data import AllFilesData
 from for_main_window.countries_box import CountriesBox
 from for_main_window.make_chart import MakeChart
 from for_main_window.chart_panel import ChartPanel
+from for_main_window.map_tab import MapTab
 
 
 class ChartTab(QWidget):
-    def __init__(self):
+    def __init__(self, map_tab: MapTab):
         super().__init__()
         self.__all_files_data = AllFilesData()
         self.__layout = QGridLayout()
@@ -27,13 +29,15 @@ class ChartTab(QWidget):
     def __load_file(self, path):
         try:
             self.__all_files_data.add_file(path)
+            # self.__map_tab.dodaj_mape_do_layoutu(path)
             print("added to all_files_data")
             self.__add_chart_panel(self.__layout)
             print("created chart_panel")
             # self.__add_chart(self.__layout)
             self.__add_countries_list_with_search(self.__layout)
             # self.__add_slider(self.__layout)
-
+            # funkcja ktora uruchamia maptab
+            # tutaj zrobic jakies odwolanie do map
         except FileNotFoundError:
             print("File not found")
         finally:
@@ -46,12 +50,17 @@ class ChartTab(QWidget):
 
     def __add_countries_list_with_search(self, layout):
         countries = self.__all_files_data.get_all_countries()
-        self.__countries_box = CountriesBox(countries, self.__chart_panel.add_country,
-                                            self.__chart_panel.remove_country)
+
         if self.__countries_box is None:
+            self.__countries_box = CountriesBox(countries, self.__chart_panel.add_country,
+                                                self.__chart_panel.remove_country)
             layout.addWidget(self.__countries_box, 0, 4, 4, 2, alignment=Qt.AlignmentFlag.AlignHCenter)
         else:
             layout.removeWidget(self.__countries_box)
+            sip.delete(self.__countries_box)
+            self.__countries_box = None
+            self.__countries_box = CountriesBox(countries, self.__chart_panel.add_country,
+                                                self.__chart_panel.remove_country)
             layout.addWidget(self.__countries_box, 0, 4, 4, 2, alignment=Qt.AlignmentFlag.AlignHCenter)
 
     # ------------------------------------------------------------------------------------------------------
@@ -84,6 +93,8 @@ class ChartTab(QWidget):
             layout.addWidget(self.__chart_panel, 0, 0, 8, 4, alignment=Qt.AlignmentFlag.AlignVCenter)
         else:
             layout.removeWidget(self.__chart_panel)
+            sip.delete(self.__chart_panel)
+            self.__chart_panel = None
             self.__chart_panel = ChartPanel(self.__all_files_data)
             layout.addWidget(self.__chart_panel, 0, 0, alignment=Qt.AlignmentFlag.AlignVCenter)
 

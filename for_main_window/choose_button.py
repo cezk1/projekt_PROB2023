@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QPushButton, QFileDialog
 import os
 import sys
 
+
 class ChooseButton(QPushButton):
     def __init__(self, button_clicked_function):
         super().__init__()
@@ -19,7 +20,7 @@ class ChooseButton(QPushButton):
         parent = None
 
         potential_file, _ = QFileDialog.getOpenFileName(parent, "Choose proper xlsx file",
-                                                        starting_dir, "XLSX (*.xlsx);;All Files (*)", options=options)
+                                                        starting_dir, "XLSX (*.xlsx);;All Files (*)")
 
         print(potential_file)
 
