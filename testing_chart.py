@@ -1,5 +1,5 @@
 import pandas as pd
-from make_chart import MakeChart
+from for_main_window.make_chart import MakeChart
 from for_data_handling.all_files_data import AllFilesData
 
 

@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import QWidget, QSlider, QLabel, QHBoxLayout, QVBoxLayout, 
 class DateSlider(QWidget):
 
     # DoubleSlider z materialow
-    def __init__(self, min_val, max_val):
+    def __init__(self, min_val, max_val, update_min_max):
         super().__init__()
         self.__validate_args(int(min_val), int(max_val))
 
@@ -13,6 +13,8 @@ class DateSlider(QWidget):
         self.__max_val = int(max_val)
         self.__step = 1
         self.__tick_interval = self.__step
+
+        self.__update_min_max = update_min_max
 
         self.__create_view()
 
@@ -51,6 +53,7 @@ class DateSlider(QWidget):
 
         slider.setValue(self.__min_val)
         slider.valueChanged.connect(self.__handle_from_change)
+        slider.valueChanged.connect(self.__update_min_max)
 
         return slider
 
@@ -65,8 +68,7 @@ class DateSlider(QWidget):
 
         slider.setValue(self.__max_val)
         slider.valueChanged.connect(self.__handle_to_change)
-
-        slider_label = QLabel(f"Year to: {slider.value()}")
+        slider.valueChanged.connect(self.__update_min_max)
 
         return slider
 
@@ -96,12 +98,19 @@ class DateSlider(QWidget):
 
     def __update_chosen_val_from(self):
         value = self.__slider_from.value()
-        print(f"Updated value from: {value}")
+        # print(f"Updated value from: {value}")
         self.__chosen_from_label.setText(f"Year from: {value}")
 
     def __update_chosen_val_to(self):
         value = self.__slider_to.value()
-        print(f"Updated value to: {value}")
+        # print(f"Updated value to: {value}")
         self.__chosen_to_label.setText(f"Year to: {value}")
 
+    def get_val_to(self):
+        print(self.__slider_to.value())
+        return self.__slider_to.value()
+
+    def get_val_from(self):
+        print(self.__slider_from.value())
+        return self.__slider_from.value()
 

@@ -5,6 +5,6 @@ from PyQt5.QtWidgets import QLineEdit
 class FilePath(QLineEdit):
     def __init__(self):
         super().__init__()
-        self.setPlaceholderText("File path")
+        self.setPlaceholderText("Insert file path")
         self.setFixedSize(300, 50)
 

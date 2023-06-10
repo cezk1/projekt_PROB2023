@@ -11,9 +11,11 @@ from for_main_window.country_button import CountryButton
 
 
 class CountryList(QScrollArea):
-    def __init__(self, country_list):
+    def __init__(self, country_list, add_function, remove_function):
         super().__init__()
         self.__country_list = country_list
+        self.__add_function = add_function
+        self.__remove_function = remove_function
         self.__button_list = []
         self.__init_list()
 
@@ -25,7 +27,7 @@ class CountryList(QScrollArea):
 
         for country in self.__country_list:
             button_name = f'{country}'
-            btn = CountryButton(button_name)
+            btn = CountryButton(button_name, self.__add_function, self.__remove_function)
             self.__button_list.append(btn)
             self.__btn_layout.addWidget(btn)
 
@@ -42,7 +44,6 @@ class CountryList(QScrollArea):
             self.__btn_layout.removeRow(index)
 
     def filter_buttons(self, text):
-        print(text)
         for button in self.__button_list:
             if text.lower() in button.text().lower():
                 button.setVisible(True)
