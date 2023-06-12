@@ -41,6 +41,8 @@ class ChartTab(QWidget):
             self.__add_chart_panel(self.__layout)  # dodanie do layoutu zakladki (wyswietlenie) wykresu z suwakami
             print("created chart_panel")
 
+            # self.__map_tab.make_map(path)
+
             # self.__add_chart(self.__layout)
             self.__add_countries_list_with_search(self.__layout)  # dodanie do layoutu (wyswietlenie)
             # wyszukiwarki panstw

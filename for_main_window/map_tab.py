@@ -22,3 +22,11 @@ class MapTab(QWidget):
         # na postawie dataframu stworzyc widget mapy z kilkaniem i wszystkim innym
         # dodac mape do layoutu MapTab
         pass
+
+    def make_map(self, path):
+        # stworzenie dataframu, dodanie do world -> Widget
+        # dodawanie widgetu do layoutu zakladki
+        # layaout.addWidget
+        pass
+
+
