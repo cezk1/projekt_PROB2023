@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
-from for_main_window.country_search import CountrySearch
-from for_main_window.country_list import CountryList
+from for_main_window.for_chart_tab.country_search import CountrySearch
+from for_main_window.for_chart_tab.country_list import CountryList
 
 
 # klasa odpowiadajaca za wyglad przewijanej listy z panstwami i pola do filtrowania panstw
@@ -24,6 +24,7 @@ class CountriesBox(QWidget):
 
         layout.addWidget(self.__search_box)
         layout.addWidget(self.__scrollable_list)
+        self.setFixedHeight(300)
 
         self.setLayout(layout)
 

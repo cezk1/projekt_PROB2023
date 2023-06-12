@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
-from for_main_window.for_chart.date_slider import DateSlider
-from for_main_window.make_chart import MakeChart
+from for_main_window.for_chart_tab.date_slider import DateSlider
+from for_main_window.for_chart_tab.make_chart import MakeChart
 import bisect
 
 

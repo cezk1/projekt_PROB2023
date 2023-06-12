@@ -1,8 +1,8 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
 
-from for_main_window.file_path import FilePath
-from for_main_window.added_files_list import AddedFilesList
-from for_main_window.choose_button import ChooseButton
+from for_main_window.for_chart_tab.file_path import FilePath
+from for_main_window.for_chart_tab.added_files_list import AddedFilesList
+from for_main_window.for_chart_tab.choose_button import ChooseButton
 
 import os
 

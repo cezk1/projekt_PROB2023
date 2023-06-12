@@ -1,7 +1,6 @@
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
-from for_data_handling.all_files_data import AllFilesData
-from for_main_window.make_chart import MakeChart
+from for_main_window.for_chart_tab.make_chart import MakeChart
 
 
 # tego w koncu tez nie uzywam

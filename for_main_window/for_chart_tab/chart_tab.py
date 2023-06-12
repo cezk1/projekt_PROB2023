@@ -2,14 +2,14 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QGridLayout
 from PyQt5 import sip
 
-from for_main_window.for_chart.date_slider import DateSlider
-from for_main_window.main_chart import MainChart
-from for_main_window.files_adder import FilesAdder
+from for_main_window.for_chart_tab.date_slider import DateSlider
+from for_main_window.for_chart_tab.main_chart import MainChart
+from for_main_window.for_chart_tab.files_adder import FilesAdder
 from for_data_handling.all_files_data import AllFilesData
-from for_main_window.countries_box import CountriesBox
-from for_main_window.make_chart import MakeChart
-from for_main_window.chart_panel import ChartPanel
-from for_main_window.map_tab import MapTab
+from for_main_window.for_chart_tab.countries_box import CountriesBox
+from for_main_window.for_chart_tab.make_chart import MakeChart
+from for_main_window.for_chart_tab.chart_panel import ChartPanel
+from for_main_window.for_map_tab.map_tab import MapTab
 
 
 # widget odpowiadajacy za wyglad calej zakladki zwiazanej z wykresem

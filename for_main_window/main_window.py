@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget, QGridLayout, QTabWidget
-from for_main_window.chart_tab import ChartTab
-from for_main_window.map_tab import MapTab
+from PyQt5.QtWidgets import QMainWindow, QTabWidget
+from for_main_window.for_chart_tab.chart_tab import ChartTab
+from for_main_window.for_map_tab.map_tab import MapTab
 
 
 # klasa MainWindow wywolywana przy otwieraniu aplikacji tworzy dwie zakladki (na wykres i mape) i dodaje je do

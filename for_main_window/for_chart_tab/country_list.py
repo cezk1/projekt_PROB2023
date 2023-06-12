@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QScrollArea, QFormLayout, QGroupBox, QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton
+from PyQt5.QtWidgets import QScrollArea, QFormLayout, QGroupBox
 
-from for_main_window.country_button import CountryButton
+from for_main_window.for_chart_tab.country_button import CountryButton
 
 # country_list = ['Austria', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria', 'Croatia', 'Czechia', 'Denmark',
 #                       'Estonia', 'Finland', 'France', 'Germany (until 1990 former territory of the FRG)', 'Greece',
@@ -38,6 +38,7 @@ class CountryList(QScrollArea):
         self.setWidget(self.__btn_group_box)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.setWidgetResizable(True)
+
 
     def __remove_all_btns(self):
         btn_num = self.__btn_layout.count()
