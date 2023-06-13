@@ -13,7 +13,7 @@ class ChartPanel(QWidget):
         self.__min_year = min(self.__all_files_data.get_all_years())
         self.__max_year = max(self.__all_files_data.get_all_years())
         self.__create_view()
-        self.setFixedSize(1000, 800)
+        self.setMinimumSize(1000, 800)
 
     # add_country i remove_country sa przekazywane do listy przyciskow panstw, tak aby po kliknieciu na nazwe
     # danego kraju wyswietlily sie dla niego wykresy
@@ -38,21 +38,16 @@ class ChartPanel(QWidget):
         # z przekazanym odwolaniem do funkcji aktualizujacej wyglad wykresu
 
         layout = QVBoxLayout()
-        if len(self.__all_files_data.get_files_data()) >= 0:  # tworzy wykres tylko gdy sa jakies dane w all_files_data
 
-            self.__chart = MakeChart(self.__all_files_data, self.__country_list, self.__min_year, self.__max_year)
-            layout.addWidget(self.__chart)  # stworzenie wykresu dla przekazanej listy wszystkich danych, listy
-            # panstw do wyswietlenia oraz maksymalnego i minimalnego roku
+        self.__chart = MakeChart(self.__all_files_data, self.__country_list, self.__min_year, self.__max_year)
+        layout.addWidget(self.__chart)  # stworzenie wykresu dla przekazanej listy wszystkich danych, listy
+        # panstw do wyswietlenia oraz maksymalnego i minimalnego roku
 
         layout.addWidget(self.__date_slider)
 
         layout.setStretch(0, 10)
         layout.setStretch(1, 1)
         self.setLayout(layout)
-
-    # jakies testowe chyba
-    def __update_chart2(self):
-        print(self.__date_slider.get_val_from(), self.__date_slider.get_val_to())
 
     # aktualizowanie wyswietlanego wykresu na podstawie wartosci suwakow
     def __update_chart(self):
@@ -61,4 +56,11 @@ class ChartPanel(QWidget):
         country_list = self.__country_list
 
         self.__chart.update_plot(country_list, min_year, max_year)
+
+    def img_getter(self):
+        return self.__chart.get_img_data()
+
+    def info_getter(self):
+        return self.__min_year, self.__max_year, self.__country_list
+
 

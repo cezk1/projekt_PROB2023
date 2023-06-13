@@ -23,8 +23,6 @@ class ChooseButton(QPushButton):
         potential_file, _ = QFileDialog.getOpenFileName(parent, "Choose proper xlsx file",
                                                         starting_dir, "XLSX (*.xlsx);;All Files (*)")
 
-        print(potential_file)
-
         if potential_file:
             self.__btn_clicked(potential_file)
         else:

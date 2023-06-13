@@ -2,12 +2,9 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QGridLayout
 from PyQt5 import sip
 
-from for_main_window.for_chart_tab.date_slider import DateSlider
-from for_main_window.for_chart_tab.main_chart import MainChart
 from for_main_window.for_chart_tab.files_adder import FilesAdder
 from for_data_handling.all_files_data import AllFilesData
 from for_main_window.for_chart_tab.countries_box import CountriesBox
-from for_main_window.for_chart_tab.make_chart import MakeChart
 from for_main_window.for_chart_tab.chart_panel import ChartPanel
 from for_main_window.for_map_tab.map_tab import MapTab
 
@@ -36,19 +33,14 @@ class ChartTab(QWidget):
             # obslugujacego wszystkie pliki
 
             # self.__map_tab.dodaj_mape_do_layoutu(path)
-            print("added to all_files_data")
 
             self.__add_chart_panel(self.__layout)  # dodanie do layoutu zakladki (wyswietlenie) wykresu z suwakami
-            print("created chart_panel")
 
             # self.__map_tab.make_map(path)
 
-            # self.__add_chart(self.__layout)
             self.__add_countries_list_with_search(self.__layout)  # dodanie do layoutu (wyswietlenie)
             # wyszukiwarki panstw
-            print("created countries list with search")
 
-            # self.__add_slider(self.__layout)
             # funkcja ktora uruchamia maptab
             # tutaj zrobic jakies odwolanie do map
 
@@ -71,7 +63,8 @@ class ChartTab(QWidget):
 
         if self.__countries_box is None:
             self.__countries_box = CountriesBox(countries, self.__chart_panel.add_country,
-                                                self.__chart_panel.remove_country, self.__chart_panel.clear_countries)
+                                                self.__chart_panel.remove_country, self.__chart_panel.clear_countries,
+                                                self.__chart_panel.img_getter, self.__chart_panel.info_getter)
             # odwolania do funkcji chart_panel.add_country i chart_panel.add_country pozwalaja na polaczenie
             # listy i przyciskow na liscie krajow z wykresem
             layout.addWidget(self.__countries_box, 0, 2, 1, 1, alignment=Qt.AlignmentFlag.AlignHCenter)
@@ -82,39 +75,9 @@ class ChartTab(QWidget):
             sip.delete(self.__countries_box)
             self.__countries_box = None
             self.__countries_box = CountriesBox(countries, self.__chart_panel.add_country,
-                                                self.__chart_panel.remove_country, self.__chart_panel.clear_countries)
+                                                self.__chart_panel.remove_country, self.__chart_panel.clear_countries,
+                                                self.__chart_panel.img_getter, self.__chart_panel.info_getter)
             layout.addWidget(self.__countries_box, 0, 2, 1, 1, alignment=Qt.AlignmentFlag.AlignHCenter)
-
-
-
-
-    # ------------------------------------------------------------------------------------------------------
-    # tego ponizej nie uzywam na razie ale nie usuwam bo moze sie przyda
-    # jak sie okaze ze wszystko dziala to mozna usunac od tego momentu...
-
-    def __add_slider(self, layout):
-        max_val = max(self.__all_files_data.get_all_years())
-        min_val = min(self.__all_files_data.get_all_years())
-        if self.__date_slider is None:
-            self.__date_slider = DateSlider(min_val, max_val, self.update_test)
-            layout.addWidget(self.__date_slider, 7, 0, 1, 4, alignment=Qt.AlignmentFlag.AlignVCenter)
-        else:
-            layout.removeWidget(self.__date_slider)
-            self.__date_slider = DateSlider(min_val, max_val, self.update_test)
-            layout.addWidget(self.__date_slider, 7, 0, 1, 4, alignment=Qt.AlignmentFlag.AlignVCenter)
-
-    def __add_chart(self, layout):
-        self.__chart_maker = MakeChart(self.__all_files_data)
-        if self.__chart_view is None:
-            self.__chart_view = MainChart(self.__chart_maker)
-            print("stworzono chart view")
-            layout.addWidget(self.__chart_view, 0, 0, 4, 4, alignment=Qt.AlignmentFlag.AlignVCenter)
-
-    # ...do tego momentu
-    # ------------------------------------------------------------------------------------------------------
-
-
-
 
     # add_chart_panel dodaje do layoutu wykres z suwakami
     def __add_chart_panel(self, layout):
@@ -128,10 +91,6 @@ class ChartTab(QWidget):
             self.__chart_panel = None
             self.__chart_panel = ChartPanel(self.__all_files_data)
             layout.addWidget(self.__chart_panel, 0, 0, 2, 2, alignment=Qt.AlignmentFlag.AlignVCenter)
-
-    # ta funkcja chyba tylko do jakiegos testu przewijania byla potrzebna
-    def update_test(self):
-        print(self.__date_slider.get_val_from(), self.__date_slider.get_val_to())
 
     # set_start_elems ustawia startowe elementy layoutu, czyli mozliwosc dodania pliku
     def __set_start_elems(self):

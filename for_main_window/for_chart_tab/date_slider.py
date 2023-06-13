@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QWidget, QSlider, QLabel, QHBoxLayout, QVBoxLayout, 
 
 class DateSlider(QWidget):
 
-    # DoubleSlider z materialow
+    # DoubleSlider
     def __init__(self, min_val, max_val, update_min_max):  # update_min_max to przekazana funkcja, ktora wplywa na
         # wyswietlany wykres
         super().__init__()
