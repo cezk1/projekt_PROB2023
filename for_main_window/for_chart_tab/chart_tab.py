@@ -59,10 +59,10 @@ class ChartTab(QWidget):
     # funkcje dodajace elementy do layoutu
 
     # add_file_path dodaje do layoutu miejsce, w ktorym uzytkownik moze wprowadzic sciezke i dodac pliki
-    def __add_file_path(self, layout):
+    def __add_file_adder(self, layout):
         files_adder = FilesAdder(self.__load_file)  # do FilesAdder trzeba przekazac funkcje load_file, zeby polaczyc
         # klikanie przycisku w FilesAdder ze stworzeniem wykresu
-        layout.addWidget(files_adder, 4, 4, 4, 2, alignment=Qt.AlignmentFlag.AlignHCenter)
+        layout.addWidget(files_adder, 1, 2, 1, 1, alignment=Qt.AlignmentFlag.AlignHCenter)
 
     # add_countries_list_with_search dodaje do layoutu przewijana liste panstw i filtrowanie listy
     def __add_countries_list_with_search(self, layout):
@@ -70,10 +70,10 @@ class ChartTab(QWidget):
 
         if self.__countries_box is None:
             self.__countries_box = CountriesBox(countries, self.__chart_panel.add_country,
-                                                self.__chart_panel.remove_country)
+                                                self.__chart_panel.remove_country, self.__chart_panel.clear_countries)
             # odwolania do funkcji chart_panel.add_country i chart_panel.add_country pozwalaja na polaczenie
             # listy i przyciskow na liscie krajow z wykresem
-            layout.addWidget(self.__countries_box, 0, 4, 4, 2, alignment=Qt.AlignmentFlag.AlignHCenter)
+            layout.addWidget(self.__countries_box, 0, 2, 1, 1, alignment=Qt.AlignmentFlag.AlignHCenter)
         else:
             # jesli countries_box byl juz wczesniej zrobiony to usuwamy istniejacy i dodajemy do layoutu nowy
             # z aktualnymi informacjami
@@ -82,7 +82,7 @@ class ChartTab(QWidget):
             self.__countries_box = None
             self.__countries_box = CountriesBox(countries, self.__chart_panel.add_country,
                                                 self.__chart_panel.remove_country)
-            layout.addWidget(self.__countries_box, 0, 4, 4, 2, alignment=Qt.AlignmentFlag.AlignHCenter)
+            layout.addWidget(self.__countries_box, 0, 2, 1, 1, alignment=Qt.AlignmentFlag.AlignHCenter)
 
 
 
@@ -119,14 +119,14 @@ class ChartTab(QWidget):
     def __add_chart_panel(self, layout):
         if self.__chart_panel is None:
             self.__chart_panel = ChartPanel(self.__all_files_data)  # stworzenie obiektu ChartPanel
-            layout.addWidget(self.__chart_panel, 0, 0, 8, 4, alignment=Qt.AlignmentFlag.AlignVCenter)
+            layout.addWidget(self.__chart_panel, 0, 0, 2, 2, alignment=Qt.AlignmentFlag.AlignVCenter)
         else:
             # tak samo jak z lista panstw, najpierw trzeba usunac istniejacy juz chart_panel
             layout.removeWidget(self.__chart_panel)
             sip.delete(self.__chart_panel)
             self.__chart_panel = None
             self.__chart_panel = ChartPanel(self.__all_files_data)
-            layout.addWidget(self.__chart_panel, 0, 0, alignment=Qt.AlignmentFlag.AlignVCenter)
+            layout.addWidget(self.__chart_panel, 0, 0, 2, 2, alignment=Qt.AlignmentFlag.AlignVCenter)
 
     # ta funkcja chyba tylko do jakiegos testu przewijania byla potrzebna
     def update_test(self):
@@ -136,7 +136,7 @@ class ChartTab(QWidget):
     def __set_start_elems(self):
         layout = self.__layout
         # adding elements to layout
-        self.__add_file_path(layout)
+        self.__add_file_adder(layout)
         # self.__add_countries_list_with_search(layout)
 
         self.setLayout(layout)

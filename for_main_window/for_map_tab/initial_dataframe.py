@@ -3,6 +3,7 @@ import pandas as pd
 from for_data_handling.all_files_data import AllFilesData
 from for_data_handling.make_file_data import MakeFileData
 
+
 class InitialDataframe:
     def __init__(self, path, all_files_data=AllFilesData):
         self.__df = None

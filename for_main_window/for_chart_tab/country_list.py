@@ -27,25 +27,32 @@ class CountryList(QScrollArea):
         self.__btn_layout = QFormLayout()
         self.__btn_group_box = QGroupBox()
 
-        # dla kazdego kraju tworze przycisk z jego nazwa i dodaje do listy
-        for country in self.__country_list:
-            button_name = f"{country}"
-            btn = CountryButton(button_name, self.__add_function, self.__remove_function)  # stworzenie przycisku
-            self.__button_list.append(btn)  # dodanie go do listy przyciskow
-            self.__btn_layout.addWidget(btn)  # dodanie go do layoutu listy
+        self.__add_all_btns(self.__button_list, self.__btn_layout)
 
         self.__btn_group_box.setLayout(self.__btn_layout)
         self.setWidget(self.__btn_group_box)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.setWidgetResizable(True)
 
+    def __add_all_btns(self, button_list, btn_layout):
+        # dla kazdego kraju tworze przycisk z jego nazwa i dodaje do listy
+        for country in self.__country_list:
+            button_name = f"{country}"
+            btn = CountryButton(button_name, self.__add_function, self.__remove_function)  # stworzenie przycisku
+            button_list.append(btn)  # dodanie go do listy przyciskow
+            btn_layout.addWidget(btn)  # dodanie go do layoutu listy
 
     def __remove_all_btns(self):
         btn_num = self.__btn_layout.count()
         start_index = btn_num
 
-        for index in range(start_index-1, -1,-1):
+        for index in range(start_index-1, -1, -1):
             self.__btn_layout.removeRow(index)
+
+    # wyczyszczenie listy kliknietych przyciskow
+    def clear_list(self):
+        self.__remove_all_btns()
+        self.__add_all_btns(self.__button_list, self.__btn_layout)
 
     # funkcja do filtrowania przyciskow na podstawie przekazanego tekstu
     def filter_buttons(self, text):

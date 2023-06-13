@@ -28,3 +28,4 @@ class CountryButton(QPushButton):
 
     def __click(self):
         self.__is_clicked = not self.__is_clicked
+

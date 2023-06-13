@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton
 from for_main_window.for_chart_tab.file_path import FilePath
 from for_main_window.for_chart_tab.added_files_list import AddedFilesList
 from for_main_window.for_chart_tab.choose_button import ChooseButton
+from for_main_window.for_chart_tab.load_file_button import LoadFileButton
 
 import os
 
@@ -24,9 +25,8 @@ class FilesAdder(QWidget):
         self.__files_list = AddedFilesList()  # stworzenie listy wszytanych sciezek
         self.__choose_button = ChooseButton(self.__chosen_from_explorer)  # stworzenie przycisku do otwierania
         # eksploratora plikow na komputerze
-        self.__text_button = QPushButton("Load inserted path")  # przycisk do wczytania sciezki
+        self.__text_button = LoadFileButton(self.__button_clicked)  # przycisk do wczytania sciezki
         # wpisanej w polu tekstowym
-        self.__text_button.clicked.connect(self.__button_clicked)
 
         # dodanie przycikow i listy do layoutu
         layout.addWidget(self.__files_list)

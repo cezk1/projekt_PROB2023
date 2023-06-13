@@ -30,7 +30,7 @@ DF_T.index.name='Country'
 
 #zamiana nazw Turcji i Niemiec aby pasowały do datasetu naturalearth_lowres
 DF_T.rename(index={'Türkiye': 'Turkey'}, inplace=True)
-DF_T.rename(index={'Germany (until...':'Germany'},inplace=True)
+DF_T.rename(index={'Germany (until...': 'Germany'}, inplace=True)
 DF_T = DF_T.rename(columns={c:str(c) for c in DF_T.columns})
 
 print(DF_T)
