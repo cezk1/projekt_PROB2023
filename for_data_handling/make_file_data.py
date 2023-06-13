@@ -99,10 +99,8 @@ class MakeFileData:
                 value_dict_for_country[year.get_year()] = year.get_value()
             test_dict_for_countries[country_name] = value_dict_for_country
         return test_dict_for_countries
-        for key, val in test_dict_for_countries.items():
-            print(f"{key}: {val}")
 
-    # ta funkcja jest do wywolywania gdzies, jesli chcemy zczytac dane z pliku
+    # ta funkcja jest do wywolywania gdzies, jesli chcemy odczytac dane z pliku
     def make_data(self):
         return self.__read_data()
 

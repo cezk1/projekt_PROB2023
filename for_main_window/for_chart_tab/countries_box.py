@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout
 from for_main_window.for_chart_tab.country_search import CountrySearch
 from for_main_window.for_chart_tab.country_list import CountryList
 from for_main_window.for_chart_tab.clear_list_button import ClearListButton
+from for_main_window.for_chart_tab.save_pdf_button import SavePdfButton
 
 
 # klasa odpowiadajaca za wyglad przewijanej listy z panstwami i pola do filtrowania panstw
@@ -25,10 +26,12 @@ class CountriesBox(QWidget):
         self.__scrollable_list = CountryList(self.__country_list, self.__add_function, self.__remove_function)
         self.__search_box = CountrySearch(self.__scrollable_list.filter_buttons)
         self.__clear_list_button = ClearListButton(self.__scrollable_list.clear_list, self.__clear_function)
+        self.__save_pdf_button = SavePdfButton()
 
         layout.addWidget(self.__search_box)
         layout.addWidget(self.__scrollable_list)
         layout.addWidget(self.__clear_list_button)
+        layout.addWidget(self.__save_pdf_button)
 
         self.setLayout(layout)
 

@@ -9,7 +9,7 @@ class AddedFilesList(QScrollArea):
 
     def __init_view(self):
         self.setWidgetResizable(True)
-        self.setFixedSize(300, 200)
+        # self.setFixedSize(300, 100)
         self.__scroll_content = QWidget(self)
         self.__scroll_layout = QVBoxLayout(self.__scroll_content)
         self.setWidget(self.__scroll_content)

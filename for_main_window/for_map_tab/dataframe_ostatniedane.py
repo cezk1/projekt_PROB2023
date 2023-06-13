@@ -1,3 +1,4 @@
+import os
 import sys
 
 import pandas as pd
@@ -60,7 +61,7 @@ print(last_data_df)
 ######
 
 world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
-world = world.rename(columns={c:str(c) for c in world.columns})
+world = world.rename(columns={c: str(c) for c in world.columns})
 
 merged_df = pd.merge(world, last_data_df, left_on='name', right_on='name')
 print(merged_df)
@@ -72,17 +73,20 @@ print(jsonfile)
 print(type(jsonfile))
 
 map_obj = folium.Map(location=[48, 10], zoom_start=4)
-json_layer = folium.GeoJson("output.geojson",name="Countries").add_to(map_obj)
+json_layer = folium.GeoJson("output.geojson", name="Countries").add_to(map_obj)
 
 #w razie dodatkowych danych pojawi się dodatkowy merged_df.columns[] w fields=
-json_layer.add_child(folium.features.GeoJsonPopup(fields=['name',(merged_df.columns[-1]),(merged_df.columns[-2])], labels=True, localize=True))
+json_layer.add_child(folium.features.GeoJsonPopup(fields=['name', (merged_df.columns[-1]), (merged_df.columns[-2])],
+                                                  labels=True, localize=True))
 
 map_obj.save('map.html')
 
 web_view = QWebEngineView()
+current_dir = os.path.dirname(sys.argv[0]).strip()
+map_dir = current_dir + "/map.html"
 
-web_view.load(QUrl.fromLocalFile(r'C:\Users\klime\OneDrive\Pulpit\przydatne_do_projektu\projekt_PROB2023-projekt_wersja1\for_map\map.html'))
-
+# web_view.load(QUrl.fromLocalFile(r'C:\Users\klime\OneDrive\Pulpit\przydatne_do_projektu\projekt_PROB2023-projekt_wersja1\for_map\map.html'))
+web_view.load(QUrl.fromLocalFile(map_dir))
 main_window = QMainWindow()
 layout = QVBoxLayout(main_window)
 

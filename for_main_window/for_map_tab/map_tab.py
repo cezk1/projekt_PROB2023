@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel
+from for_main_window.for_map_tab.map_generator_v1 import CreateMap
 
 
 class MapTab(QWidget):
@@ -23,10 +24,10 @@ class MapTab(QWidget):
         # dodac mape do layoutu MapTab
         pass
 
-    def make_map(self, path):
+    def make_map(self, all_files_data):
         # stworzenie dataframu, dodanie do world -> Widget
         # dodawanie widgetu do layoutu zakladki
         # layaout.addWidget
+        # self.__creator = CreateMap(all_files_data)
         pass
-
 

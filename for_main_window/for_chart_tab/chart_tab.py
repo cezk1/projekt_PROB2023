@@ -46,6 +46,7 @@ class ChartTab(QWidget):
             # self.__add_chart(self.__layout)
             self.__add_countries_list_with_search(self.__layout)  # dodanie do layoutu (wyswietlenie)
             # wyszukiwarki panstw
+            print("created countries list with search")
 
             # self.__add_slider(self.__layout)
             # funkcja ktora uruchamia maptab
@@ -81,7 +82,7 @@ class ChartTab(QWidget):
             sip.delete(self.__countries_box)
             self.__countries_box = None
             self.__countries_box = CountriesBox(countries, self.__chart_panel.add_country,
-                                                self.__chart_panel.remove_country)
+                                                self.__chart_panel.remove_country, self.__chart_panel.clear_countries)
             layout.addWidget(self.__countries_box, 0, 2, 1, 1, alignment=Qt.AlignmentFlag.AlignHCenter)
 
 

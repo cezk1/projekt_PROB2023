@@ -23,6 +23,9 @@ class AllFilesData:
     def get_all_countries(self):
         return self.__all_countries
 
+    def get_all_paths(self):
+        return self.__all_paths
+
     # make_file_data tworzy dane na podstawie przekazanej sciezki
     def __make_file_data(self, file_path):
         if file_path not in self.__all_paths:

@@ -40,7 +40,7 @@ class ChartPanel(QWidget):
         layout = QVBoxLayout()
         if len(self.__all_files_data.get_files_data()) >= 0:  # tworzy wykres tylko gdy sa jakies dane w all_files_data
 
-            self.__chart = MakeChart(self.__all_files_data, [], self.__min_year, self.__max_year)
+            self.__chart = MakeChart(self.__all_files_data, self.__country_list, self.__min_year, self.__max_year)
             layout.addWidget(self.__chart)  # stworzenie wykresu dla przekazanej listy wszystkich danych, listy
             # panstw do wyswietlenia oraz maksymalnego i minimalnego roku
 
