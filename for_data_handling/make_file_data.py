@@ -90,6 +90,7 @@ class MakeFileData:
         return self.__countries_with_data
 
     def make_test_dataframe(self):
+        self.__read_data()
         test_dict_for_countries = {}
         for elem in self.__countries_with_data:
             country_name = elem.get_country_name()
@@ -97,7 +98,7 @@ class MakeFileData:
             for year in elem.get_years_data():
                 value_dict_for_country[year.get_year()] = year.get_value()
             test_dict_for_countries[country_name] = value_dict_for_country
-
+        return test_dict_for_countries
         for key, val in test_dict_for_countries.items():
             print(f"{key}: {val}")
 
