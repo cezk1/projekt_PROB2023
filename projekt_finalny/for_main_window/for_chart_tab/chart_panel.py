@@ -61,6 +61,6 @@ class ChartPanel(QWidget):
         return self.__chart.get_img_data()
 
     def info_getter(self):
-        return self.__min_year, self.__max_year, self.__country_list
+        return self.__date_slider.get_val_from(), self.__date_slider.get_val_to(), self.__country_list
 
 
