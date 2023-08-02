@@ -8,8 +8,8 @@
 
 specyfikacja funkcjonalna (3.5/5 pkt); \
 specyfikacja implementacyjna (3.5/5 pkt);\
-działający program + kod (20 pkt)\
-sprawozdanie końcowe z projektu (10 pkt).
+działający program + kod (15.6/20 pkt)\
+sprawozdanie końcowe z projektu (9/10 pkt).
 
 # Temat podstawowy
 
